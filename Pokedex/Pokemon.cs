@@ -1,17 +1,22 @@
-class Pokemon
+public class Pokemon
 {
-    public int Id;
+    public int Id { get; private set; }
 
-    public string Name;
+    public string Name { get; private set; }
 
-    public Type Type;
+    public Type Type { get; private set; }
 
-    public bool Discovered;
+    public bool Discovered { get; private set; }
 
     public Pokemon(int id, string name, Type type)
     {
         Id = id;
         Name = name;
         Type = type;
+    }
+
+    public void Discover()
+    {
+        Discovered = true;
     }
 }

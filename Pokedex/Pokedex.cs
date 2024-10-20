@@ -1,5 +1,5 @@
 // https://www.pokepedia.fr/Liste_des_Pok%C3%A9mon_dans_l%27ordre_du_Pok%C3%A9dex_National
-class Pokedex
+public class Pokedex
 {
     Pokemon[] pokemons = new Pokemon[151];
 
@@ -10,7 +10,7 @@ class Pokedex
 
     public void Discover(Pokemon p)
     {
-        pokemons[p.Id - 1].Discovered = true;
+        p.Discover();
     }
 
     public Pokemon Get(int id)
@@ -20,15 +20,50 @@ class Pokedex
 
     public Pokemon Get(string name)
     {
-        // boucle jusqu'à un pokémon nommé name
-            // foreach
-            // if
-            // return
+        foreach (Pokemon pokemon in pokemons)
+        {
+            if (pokemon != null && pokemon.Name == name)
+            {
+                return pokemon;
+            }
+        }
+
         return null;
     }
 
     public Pokemon[] GetByType(Type type)
     {
-        throw new NotImplementedException();
+        int arraySize = 0;
+        foreach(Pokemon pokemon in pokemons)
+        {
+            if (pokemon != null && pokemon.Type.HasFlag(type))
+            {
+                arraySize++;
+            }
+        }
+
+        int index = 0;
+        Pokemon[] result = new Pokemon[arraySize];
+        foreach(Pokemon pokemon in pokemons)
+        {
+            if (pokemon != null && pokemon.Type.HasFlag(type))
+            {
+                result[index++] = pokemon;
+            }
+        }
+
+        return result;
     }
+/*
+    public IEnumerable<Pokemon> GetByTypeEnumerable(Type t)
+    {
+        foreach (Pokemon p in pokemons)
+        {
+            if (p != null && p.Type == t)
+            {
+                yield return p;
+            }
+        }
+    }
+*/
 }
