@@ -22,7 +22,7 @@ public class Pokedex
     {
         foreach (Pokemon pokemon in pokemons)
         {
-            if (pokemon != null && pokemon.Name == name)
+            if (pokemon != null && pokemon.Name.ToLower() == name.ToLower())
             {
                 return pokemon;
             }

@@ -1,15 +1,31 @@
 public class SearchCommand
 {
     Pokedex Pokedex;
+    bool valid = true;
+    string[] arguments;
 
-    public SearchCommand(Pokedex pokedex)
+    public SearchCommand(Pokedex pokedex, string[] commandArguments)
     {
         Pokedex = pokedex;
+
+        if (commandArguments.Length < 1)
+        {
+            valid = false;
+        }
+
+        arguments = commandArguments;
     }
 
-    public void Search(string name)
+    public void Search()
     {
-        Pokemon pokemon = Pokedex.Get(name);
+        if (!valid)
+        {
+            Console.Error.WriteLine("Not enough arguments for search command.");
+
+            return;
+        }
+
+        Pokemon pokemon = Pokedex.Get(arguments[0]);
         if (pokemon != null)
         {
             Console.WriteLine($"Name: {pokemon.Name} ({pokemon.Id})");
