@@ -1,7 +1,5 @@
-public class DiscoverCommand
+public class DiscoverCommand : Command
 {
-    Pokedex Pokedex;
-
     public DiscoverCommand(Pokedex pokedex)
     {
         Pokedex = pokedex;

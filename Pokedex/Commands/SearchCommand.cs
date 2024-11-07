@@ -1,24 +1,17 @@
-public class SearchCommand
+public class SearchCommand : Command
 {
-    Pokedex Pokedex;
-    bool valid = true;
-    string[] arguments;
-
     public SearchCommand(Pokedex pokedex, string[] commandArguments)
+        : base(pokedex, commandArguments)
     {
-        Pokedex = pokedex;
-
         if (commandArguments.Length < 1)
         {
-            valid = false;
+            isValid = false;
         }
-
-        arguments = commandArguments;
     }
 
-    public void Search()
+    public override void Execute()
     {
-        if (!valid)
+        if (!isValid)
         {
             Console.Error.WriteLine("Not enough arguments for search command.");
 

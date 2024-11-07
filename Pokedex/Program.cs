@@ -16,7 +16,8 @@
             string[] commandArgs = line.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
             CommandInterpreter interpreter = new CommandInterpreter(pokedex);
-            interpreter.Interpret(commandArgs);
+            Command command = interpreter.Interpret(commandArgs);
+            command.Execute();
         }
     }
 }

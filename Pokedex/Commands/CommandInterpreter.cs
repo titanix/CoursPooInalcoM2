@@ -10,14 +10,14 @@ public class CommandInterpreter
         this.pokedex = pokedex;
     }
     
-    public void Interpret(string[] arguments)
+    public Command Interpret(string[] arguments)
     {
         if (arguments.Length < 1)
         {
             Console.Error.WriteLine("Not enough arguments!");
             //Console.Error.WriteLine("Available commands : add, search, discover, pokedex");
 
-            return;
+            throw new ArgumentException();
         }
 
         string commandName = arguments[0];
@@ -27,21 +27,18 @@ public class CommandInterpreter
         {
             case "add":
                 AddCommand addCommand = new AddCommand(pokedex, commandArguments);
-                addCommand.Add();
-                break;
+                return addCommand;
 
             case "search":
                 SearchCommand searchCommand = new SearchCommand(pokedex, commandArguments);
-                searchCommand.Search();
-                break;
+                return searchCommand;
 
-            case "discover":
-                break;
+            //case "discover":
+            //    break;
 
             default:
                 Console.Error.WriteLine($"Command '{commandName}' not recognized.");
-
-                break;
+                throw new ArgumentException();
         }
     }
 }
