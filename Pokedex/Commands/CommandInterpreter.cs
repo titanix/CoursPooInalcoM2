@@ -12,14 +12,6 @@ public class CommandInterpreter
     
     public void Interpret(string[] arguments)
     {
-        // TODO: à implémenter
-
-        // passer
-
-        // pour chaque type de commande
-            // on va créer une classe commande
-            // parser elle-même ses arguments
-
         if (arguments.Length < 1)
         {
             Console.Error.WriteLine("Not enough arguments!");

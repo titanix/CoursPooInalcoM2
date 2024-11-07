@@ -15,14 +15,8 @@
             string line = Console.ReadLine();
             string[] commandArgs = line.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
-            Console.WriteLine(line);
-
             CommandInterpreter interpreter = new CommandInterpreter(pokedex);
             interpreter.Interpret(commandArgs);
-
-            //Console.Error.WriteLine("Mauvais nombre d'arguments");
-            //Console.Error.WriteLine("Usage: dotnet run [command] [argument]");
-
         }
     }
 }
