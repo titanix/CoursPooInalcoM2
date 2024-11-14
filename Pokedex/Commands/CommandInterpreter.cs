@@ -36,6 +36,10 @@ public class CommandInterpreter
             //case "discover":
             //    break;
 
+            case "save":
+                SaveCommand saveCommand = new (pokedex, commandArguments);
+                return saveCommand;
+
             default:
                 Console.Error.WriteLine($"Command '{commandName}' not recognized.");
                 throw new ArgumentException();

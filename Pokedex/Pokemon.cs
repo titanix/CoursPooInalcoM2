@@ -1,5 +1,7 @@
 public class Pokemon
 {
+    private string separator = ";";
+
     public int Id { get; private set; }
 
     public string Name { get; private set; }
@@ -18,5 +20,10 @@ public class Pokemon
     public void Discover()
     {
         Discovered = true;
+    }
+
+    public override string ToString()
+    {
+        return $"{Id}{separator}{Name}{separator}{(int)Type}{separator}{Discovered}";
     }
 }

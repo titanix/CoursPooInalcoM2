@@ -54,6 +54,17 @@ public class Pokedex
 
         return result;
     }
+
+    public void Save(StreamWriter file)
+    {
+        foreach (Pokemon pokemon in pokemons)
+        {
+            if (pokemon != null)
+            {
+                file.WriteLine(pokemon.ToString());
+            }
+        }
+    }
 /*
     public IEnumerable<Pokemon> GetByTypeEnumerable(Type t)
     {

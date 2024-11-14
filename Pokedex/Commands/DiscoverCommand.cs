@@ -10,4 +10,9 @@ public class DiscoverCommand : Command
         Pokemon pokemon = Pokedex.Get(name);
         pokemon.Discover();
     }
+
+    public override void Execute()
+    {
+        throw new NotImplementedException();
+    }
 }

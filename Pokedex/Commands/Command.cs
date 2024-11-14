@@ -1,4 +1,4 @@
-public class Command
+public abstract class Command
 {
     protected Pokedex Pokedex;
     protected bool isValid = true;
@@ -12,8 +12,5 @@ public class Command
         arguments = commandArguments;
     }
 
-    public virtual void Execute()
-    {
-        // rien lol
-    }
+    public abstract void Execute();
 }
