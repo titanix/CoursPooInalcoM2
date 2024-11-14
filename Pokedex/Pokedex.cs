@@ -65,16 +65,4 @@ public class Pokedex
             }
         }
     }
-/*
-    public IEnumerable<Pokemon> GetByTypeEnumerable(Type t)
-    {
-        foreach (Pokemon p in pokemons)
-        {
-            if (p != null && p.Type == t)
-            {
-                yield return p;
-            }
-        }
-    }
-*/
 }

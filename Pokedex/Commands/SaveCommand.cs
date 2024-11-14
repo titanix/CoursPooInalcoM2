@@ -14,6 +14,7 @@ public class SaveCommand : Command
 
     public override void Execute()
     {
+        // TODO: if valid
         string path = AddExtension(arguments[0]);
         path = $"{saveDirecty}/{path}";
         Directory.CreateDirectory(saveDirecty);
@@ -23,6 +24,8 @@ public class SaveCommand : Command
         SavePokedex(streamWriter);
         streamWriter.Flush();
         streamWriter.Close();
+
+        Console.WriteLine($"Pokedex saved to file {path}");
     }
 
     void SavePokedex(StreamWriter file)
@@ -34,7 +37,7 @@ public class SaveCommand : Command
     {
         if (!path.Contains("."))
         {
-            return $"{path}.txt";
+            return $"{path}.csv";
         }
 
         return path;

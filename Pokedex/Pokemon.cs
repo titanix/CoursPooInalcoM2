@@ -11,10 +11,16 @@ public class Pokemon
     public bool Discovered { get; private set; }
 
     public Pokemon(int id, string name, Type type)
+            : this(id, name, type, false)
+    {
+    }
+
+    public Pokemon(int id, string name, Type type, bool discovered)
     {
         Id = id;
         Name = name;
         Type = type;
+        Discovered = discovered;
     }
 
     public void Discover()
@@ -25,5 +31,10 @@ public class Pokemon
     public override string ToString()
     {
         return $"{Id}{separator}{Name}{separator}{(int)Type}{separator}{Discovered}";
+    }
+
+    public static void Documentation()
+    {
+        Console.WriteLine("Classe qui représente un Pokémon");
     }
 }

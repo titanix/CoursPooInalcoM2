@@ -15,9 +15,8 @@ public class CommandInterpreter
         if (arguments.Length < 1)
         {
             Console.Error.WriteLine("Not enough arguments!");
-            //Console.Error.WriteLine("Available commands : add, search, discover, pokedex");
 
-            throw new ArgumentException();
+            new NopCommand();
         }
 
         string commandName = arguments[0];
@@ -26,23 +25,23 @@ public class CommandInterpreter
         switch (commandName)
         {
             case "add":
-                AddCommand addCommand = new AddCommand(pokedex, commandArguments);
-                return addCommand;
+                return new AddCommand(pokedex, commandArguments);
 
             case "search":
-                SearchCommand searchCommand = new SearchCommand(pokedex, commandArguments);
-                return searchCommand;
+                return new SearchCommand(pokedex, commandArguments);
 
-            //case "discover":
-            //    break;
+            case "discover":
+                return new DiscoverCommand(pokedex, commandArguments);
 
             case "save":
-                SaveCommand saveCommand = new (pokedex, commandArguments);
-                return saveCommand;
+                return new SaveCommand(pokedex, commandArguments);
+
+            case "load":
+                return new LoadCommand(pokedex, commandArguments);
 
             default:
                 Console.Error.WriteLine($"Command '{commandName}' not recognized.");
-                throw new ArgumentException();
+                return new NopCommand();
         }
     }
 }

@@ -1,18 +1,37 @@
 public class DiscoverCommand : Command
 {
-    public DiscoverCommand(Pokedex pokedex)
+    public DiscoverCommand(Pokedex pokedex, string[] commandArguments)
+        : base(pokedex, commandArguments)
     {
-        Pokedex = pokedex;
-    }
-
-    public void Discover(string name)
-    {
-        Pokemon pokemon = Pokedex.Get(name);
-        pokemon.Discover();
+        if (commandArguments.Length < 1)
+        {
+            isValid = false;
+        }
     }
 
     public override void Execute()
     {
-        throw new NotImplementedException();
+        if (int.TryParse(arguments[0], out int id))
+        {
+            Discover(id);
+        }
+        else
+        {
+            Discover(arguments[0]);
+        }
+    }
+
+    void Discover(string name)
+    {
+        Pokemon pokemon = Pokedex.Get(name);
+        Console.WriteLine($"Pokemon {pokemon.Name} set to discovered");
+        pokemon.Discover();
+    }
+
+    void Discover(int id)
+    {
+        Pokemon pokemon = Pokedex.Get(id);
+        Console.WriteLine($"Pokemon {pokemon.Name} set to discovered");
+        pokemon.Discover();
     }
 }
