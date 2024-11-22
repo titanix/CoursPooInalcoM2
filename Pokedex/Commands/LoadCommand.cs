@@ -1,3 +1,5 @@
+namespace PokedexPoo;
+
 public class LoadCommand : Command
 {
     public LoadCommand(Pokedex pokedex, string[] commandArguments)

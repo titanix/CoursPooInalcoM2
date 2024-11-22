@@ -1,3 +1,5 @@
+namespace PokedexPoo;
+
 public class AddCommand : Command
 {
     public AddCommand(Pokedex pokedex, string[] commandArguments)

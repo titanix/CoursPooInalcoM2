@@ -1,3 +1,5 @@
+namespace PokedexPoo;
+
 // Affiche les pokémons contenu dans le pokedex
 public class ListCommand : Command
 {

@@ -1,3 +1,5 @@
+namespace PokedexPoo;
+
 public class CommandInterpreter
 {
     Pokedex pokedex;
@@ -38,6 +40,9 @@ public class CommandInterpreter
 
             case "load":
                 return new LoadCommand(pokedex, commandArguments);
+
+            case "json":
+                return new JsonCommand(pokedex, commandArguments);
 
             default:
                 Console.Error.WriteLine($"Command '{commandName}' not recognized.");

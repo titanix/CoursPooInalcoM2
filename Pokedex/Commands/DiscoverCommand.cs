@@ -1,3 +1,5 @@
+namespace PokedexPoo;
+
 public class DiscoverCommand : Command
 {
     public DiscoverCommand(Pokedex pokedex, string[] commandArguments)

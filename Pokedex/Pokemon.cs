@@ -1,6 +1,8 @@
+namespace PokedexPoo;
+
 public class Pokemon
 {
-    private string separator = ";";
+    string separator = ";";
 
     public int Id { get; private set; }
 
@@ -11,7 +13,7 @@ public class Pokemon
     public bool Discovered { get; private set; }
 
     public Pokemon(int id, string name, Type type)
-            : this(id, name, type, false)
+        : this(id, name, type, false)
     {
     }
 
@@ -21,6 +23,29 @@ public class Pokemon
         Name = name;
         Type = type;
         Discovered = discovered;
+    }
+
+    // Conversion depuis un objet spécialisé dans la lecture/écriture de données
+    public Pokemon(PokemonDto dto)
+    {
+        Id = dto.Id;
+        Name = dto.Name;
+        Type = dto.Type;
+        Discovered = dto.Discovered;
+    }
+
+    // Conversion vers un objet spécialisé dans la lecture/écriture de données
+    public PokemonDto ToDto()
+    {
+        PokemonDto dto = new PokemonDto()
+        {
+            Id = Id,
+            Name = Name,
+            Type = Type,
+            Discovered = Discovered,
+        };
+
+        return dto;
     }
 
     public void Discover()

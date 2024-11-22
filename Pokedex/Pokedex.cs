@@ -1,4 +1,6 @@
 // https://www.pokepedia.fr/Liste_des_Pok%C3%A9mon_dans_l%27ordre_du_Pok%C3%A9dex_National
+namespace PokedexPoo;
+
 public class Pokedex
 {
     Pokemon[] pokemons = new Pokemon[151];
@@ -34,7 +36,7 @@ public class Pokedex
     public Pokemon[] GetByType(Type type)
     {
         int arraySize = 0;
-        foreach(Pokemon pokemon in pokemons)
+        foreach (Pokemon pokemon in pokemons)
         {
             if (pokemon != null && pokemon.Type.HasFlag(type))
             {
@@ -44,7 +46,7 @@ public class Pokedex
 
         int index = 0;
         Pokemon[] result = new Pokemon[arraySize];
-        foreach(Pokemon pokemon in pokemons)
+        foreach (Pokemon pokemon in pokemons)
         {
             if (pokemon != null && pokemon.Type.HasFlag(type))
             {
@@ -64,5 +66,17 @@ public class Pokedex
                 file.WriteLine(pokemon.ToString());
             }
         }
+    }
+
+    public PokedexDto ToDto()
+    {
+        return new PokedexDto
+        {
+            // On converti tous les pokémons en leur version DTO
+            Pokemons = pokemons
+                .Where(p => p != null)
+                .Select(p => p.ToDto())
+                .ToArray()
+        };
     }
 }

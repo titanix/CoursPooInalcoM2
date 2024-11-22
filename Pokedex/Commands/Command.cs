@@ -1,3 +1,5 @@
+namespace PokedexPoo;
+
 public abstract class Command
 {
     protected Pokedex Pokedex;

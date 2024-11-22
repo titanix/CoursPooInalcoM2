@@ -1,3 +1,5 @@
+namespace PokedexPoo;
+
 // Commande qui ne fait rien
 public class NopCommand : Command
 {
@@ -7,6 +9,6 @@ public class NopCommand : Command
 
     public override void Execute()
     {
-        // ne fair rien
+        // ne fait rien
     }
 }

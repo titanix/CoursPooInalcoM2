@@ -1,3 +1,5 @@
+namespace PokedexPoo;
+
 // save <fichier>
 public class SaveCommand : Command
 {
