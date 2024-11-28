@@ -1,9 +1,27 @@
 // https://www.pokepedia.fr/Liste_des_Pok%C3%A9mon_dans_l%27ordre_du_Pok%C3%A9dex_National
-namespace PokedexPoo;
+namespace Pokedex;
 
 public class Pokedex
 {
     Pokemon[] pokemons = new Pokemon[151];
+
+    public Pokedex()
+    {
+    }
+
+    public Pokedex(PokedexDto pokedexDto)
+    {
+        LoadDto(pokedexDto);
+    }
+
+    public void LoadDto(PokedexDto pokedexDto)
+    {
+        foreach (PokemonDto pokemonDto in pokedexDto.Pokemons)
+        {
+            Pokemon pokemon = new Pokemon(pokemonDto);
+            pokemons[pokemon.Id] = pokemon;
+        }
+    }
 
     public void Add(Pokemon p)
     {

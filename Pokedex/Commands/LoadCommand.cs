@@ -1,4 +1,4 @@
-namespace PokedexPoo;
+namespace Pokedex;
 
 public class LoadCommand : Command
 {

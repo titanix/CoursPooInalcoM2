@@ -1,4 +1,4 @@
-namespace PokedexPoo;
+namespace Pokedex;
 // Affiche le nombre de pokémon contenu dans le pokedex
 public class CountCommand : Command
 {

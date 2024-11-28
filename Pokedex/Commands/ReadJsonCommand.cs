@@ -2,21 +2,20 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 
-namespace PokedexPoo;
+namespace Pokedex;
 
-// Sérialise le Pokedex sous forme de JSON
-public class JsonCommand : Command
+// Désérialise le Pokedex sous forme de JSON
+public class ReadJsonCommand : Command
 {
     string saveDirecty = "Data";
 
-    public JsonCommand(Pokedex pokedex, string[] commandArguments)
+    public ReadJsonCommand(Pokedex pokedex, string[] commandArguments)
         : base(pokedex, commandArguments)
     {
     }
 
     public override void Execute()
     {
-        // Cette classe permet de configurer comment est écrit le fichier JSON
         JsonSerializerOptions options = new JsonSerializerOptions
         {
             WriteIndented = true,
@@ -26,11 +25,12 @@ public class JsonCommand : Command
             Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement),
         };
 
-        PokedexDto pokedexDto = Pokedex.ToDto();
-        string jsonString = JsonSerializer.Serialize(pokedexDto, options);
         string path = $"{saveDirecty}/{arguments[0]}.json";
-        File.WriteAllText(path, jsonString);
+        string content = File.ReadAllText(path);
 
-        Console.WriteLine("Fichier bien sauvegardé.");
+        PokedexDto pokedexDto = JsonSerializer.Deserialize<PokedexDto>(content, options);
+        Pokedex.LoadDto(pokedexDto);
+
+        Console.WriteLine("Fichier chargé.");
     }
 }

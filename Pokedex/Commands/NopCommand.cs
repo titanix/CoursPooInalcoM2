@@ -1,4 +1,4 @@
-namespace PokedexPoo;
+namespace Pokedex;
 
 // Commande qui ne fait rien
 public class NopCommand : Command
