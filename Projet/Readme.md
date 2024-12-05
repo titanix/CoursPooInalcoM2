@@ -1,4 +1,4 @@
-# Projet
+# Projet
 
 L'étudiant doit rendre un projet présentant les caractéristiques présentées plus bas.
 Chaque item vaut un certain nombre de points (à définir). Un projet sera donné noté en fonction des objectifs atteints.
