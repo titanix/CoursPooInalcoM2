@@ -1,15 +1,19 @@
+using System.Text.RegularExpressions;
+
 namespace Pokedex;
 
 public class CommandInterpreter
 {
     Pokedex pokedex;
+    LocalizationService localizationService;
 
-    public CommandInterpreter(Pokedex pokedex)
+    public CommandInterpreter(Pokedex pokedex, LocalizationService localizationService)
     {
         // 'this' permet de faire référence au champ de la classe
         // plutôt qu'au paramètre de la méthode
         // 'this' n'est utile que quand l'argument à le même nom qu'un champ
         this.pokedex = pokedex;
+        this.localizationService = localizationService;
     }
     
     public Command Interpret(string[] arguments)
@@ -22,6 +26,7 @@ public class CommandInterpreter
         }
 
         string commandName = arguments[0];
+        //commandName = localizationService.GetText(commandName);
         string[] commandArguments = arguments.Skip(1).ToArray();
 
         switch (commandName)
@@ -45,11 +50,18 @@ public class CommandInterpreter
                 return new WriteJsonCommand(pokedex, commandArguments);
 
             case "read_json":
-                return new ReadJsonCommand(pokedex, commandArguments);
+                return new ReadJsonCommand(pokedex, localizationService, commandArguments);
 
+            case "change_lang":
+                return new ChangeLanguageCommand(pokedex, localizationService, commandArguments);
+
+            default:
+                throw new CommandNotFoundException($"La commande {commandName} n'existe pas.");
+/*
             default:
                 Console.Error.WriteLine($"Command '{commandName}' not recognized.");
                 return new NopCommand();
+                */
         }
     }
 }

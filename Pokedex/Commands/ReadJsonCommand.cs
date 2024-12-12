@@ -7,11 +7,17 @@ namespace Pokedex;
 // Désérialise le Pokedex sous forme de JSON
 public class ReadJsonCommand : Command
 {
+    LocalizationService localizationService;
+
     string saveDirecty = "Data";
 
-    public ReadJsonCommand(Pokedex pokedex, string[] commandArguments)
+    public ReadJsonCommand(
+        Pokedex pokedex,
+        LocalizationService localizationService,
+        string[] commandArguments)
         : base(pokedex, commandArguments)
     {
+        this.localizationService = localizationService;
     }
 
     public override void Execute()
@@ -25,12 +31,21 @@ public class ReadJsonCommand : Command
             Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement),
         };
 
-        string path = $"{saveDirecty}/{arguments[0]}.json";
-        string content = File.ReadAllText(path);
+        try
+        {
+            string path = $"{saveDirecty}/{arguments[0]}.json";
+            string content = File.ReadAllText(path);
 
-        PokedexDto pokedexDto = JsonSerializer.Deserialize<PokedexDto>(content, options);
-        Pokedex.LoadDto(pokedexDto);
+            PokedexDto pokedexDto = JsonSerializer.Deserialize<PokedexDto>(content, options);
+            Pokedex.LoadDto(pokedexDto);
 
-        Console.WriteLine("Fichier chargé.");
+            //Console.WriteLine("Fichier chargé.");
+            string message = localizationService.GetText("msg.FileLoaded");
+            Console.WriteLine(message);
+        }
+        catch// (FileNotFoundException e)
+        {
+            Console.WriteLine("Fichier non trouvé");
+        }
     }
 }

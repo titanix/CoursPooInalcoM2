@@ -1,11 +1,14 @@
-﻿namespace Pokedex;
+﻿using System.Globalization;
+
+namespace Pokedex;
 
 public class Program
 {
     public static void Main(string[] args)
     {
         Pokedex pokedex = new Pokedex();
-        CommandInterpreter interpreter = new CommandInterpreter(pokedex);
+        LocalizationService localizationService = new LocalizationService();
+        CommandInterpreter interpreter = new CommandInterpreter(pokedex, localizationService);
 
         while (true)
         {
@@ -13,8 +16,15 @@ public class Program
             string line = Console.ReadLine();
             string[] commandArgs = line.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
-            Command command = interpreter.Interpret(commandArgs);
-            command.Execute();
+            try
+            {
+                Command command = interpreter.Interpret(commandArgs);
+                command.Execute();
+            }
+            catch (CommandNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
