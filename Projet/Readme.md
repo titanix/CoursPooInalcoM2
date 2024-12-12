@@ -38,6 +38,8 @@ Une commande chacun de chacune des catégories suivantes doit être présentes :
 - lecture d'un fichier structuré en utilisant un désérialiseur
 - écriture d'un fichier structuré en utilisant un sérialiseur
 - aide (liste les commandes disponibles)
+- bonus : commande de changement de langue
+- bonus : le programme affiche et prend des commandes en au moins deux langues
 
 ### Spécifications techniques
 
