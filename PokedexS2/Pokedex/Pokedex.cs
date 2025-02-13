@@ -9,6 +9,14 @@ public class Pokedex
     {
     }
 
+    public int Count
+    {
+        get
+        {
+            return pokemons.Where(p => p != null).ToArray().Length;
+        }
+    }
+
     public Pokedex(PokedexDto pokedexDto)
     {
         LoadDto(pokedexDto);
