@@ -5,6 +5,13 @@ public class Pokedex
 {
     Pokemon[] pokemons = new Pokemon[151];
 
+    public int Count
+    {
+        get
+        {
+         return pokemons.Where(p => p != null).Count();
+        }
+    }
     public Pokedex()
     {
     }
