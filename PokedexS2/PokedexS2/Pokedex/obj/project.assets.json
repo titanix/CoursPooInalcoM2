@@ -1,0 +1,72 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net8.0": []
+  },
+  "packageFolders": {
+    "/Users/perrineqhn/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/perrineqhn/Desktop/M2/S2/POO/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+      "projectName": "Pokedex",
+      "projectPath": "/Users/perrineqhn/Desktop/M2/S2/POO/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+      "packagesPath": "/Users/perrineqhn/.nuget/packages/",
+      "outputPath": "/Users/perrineqhn/Desktop/M2/S2/POO/CoursPooInalcoM2/PokedexS2/Pokedex/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/perrineqhn/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.100/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
