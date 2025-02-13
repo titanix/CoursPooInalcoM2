@@ -5,8 +5,17 @@ public class Pokedex
 {
     Pokemon[] pokemons = new Pokemon[151];
 
+
     public Pokedex()
     {
+    }
+
+    public int Count
+    {
+        get
+        {
+            return pokemons.Count(p => p != null); // On compte le nombre de pokémons non nuls
+        }
     }
 
     public Pokedex(PokedexDto pokedexDto)
