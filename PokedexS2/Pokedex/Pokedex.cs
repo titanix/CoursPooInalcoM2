@@ -46,7 +46,7 @@ public class Pokedex
         return pokemons[id - 1];
     }
 
-    public Pokemon Get(string name)
+    public Pokemon GetByName(string name)
     {
         foreach (Pokemon pokemon in pokemons)
         {

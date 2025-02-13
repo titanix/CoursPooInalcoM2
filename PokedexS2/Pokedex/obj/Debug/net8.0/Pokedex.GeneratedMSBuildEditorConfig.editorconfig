@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Pokedex
-build_property.ProjectDir = /Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/CoursPooInalcoM2/PokedexS2/Pokedex/
+build_property.ProjectDir = /Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

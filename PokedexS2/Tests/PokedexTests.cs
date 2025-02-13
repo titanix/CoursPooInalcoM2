@@ -29,7 +29,7 @@ public class PokedexTests
         Pokemon pred = pokedex.Get(1);
 
         // Assert
-        Assert.Equal<Pokemon>(pred, pokemon);
+        Assert.Equal<Pokemon>(pokemon, pred);
     }  
 
     [Fact]
@@ -44,7 +44,7 @@ public class PokedexTests
         pokedex.Discover(pokemon);
 
         // Assert
-        Assert.Equal<bool>(pokedex.Get(1).Discovered, true);
+        Assert.True(pokedex.Get(1).Discovered);
     }
 
     [Fact]
@@ -56,10 +56,16 @@ public class PokedexTests
         pokedex.Add(pokemon);
 
         // Act
-        Pokemon p = pokedex.Get("Bulbizarre");
+        Pokemon p = pokedex.GetByName("Bulbizarre");
 
         // Assert
-        Assert.Equal<Pokemon>(p, pokemon);
+        Assert.Equal<Pokemon>(pokemon, p);
+
+        // Act 2: Récupérer un Pokémon avec un nom null
+        Pokemon nullPokemon = pokedex.GetByName("null");
+
+        // Assert 2: Vérifier que le résultat est null
+        Assert.Null(nullPokemon);
     }
 
     [Fact]
@@ -80,9 +86,9 @@ public class PokedexTests
         // Assert
         Assert.Equal<int>(2, pokedex_filtre.Length);
         Pokemon p1 = pokedex_filtre[0];
-        Assert.Equal<Pokemon>(p1, pokemon1);
+        Assert.Equal<Pokemon>(pokemon1, pokedex.GetByName(p1.Name));
         Pokemon p2 = pokedex_filtre[1];
-        Assert.Equal<Pokemon>(p2, pokemon2);
+        Assert.Equal<Pokemon>(pokemon2, pokedex.GetByName(p2.Name));
     }
 
 }

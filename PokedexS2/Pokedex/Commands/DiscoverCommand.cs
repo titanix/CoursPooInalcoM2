@@ -25,7 +25,7 @@ public class DiscoverCommand : Command
 
     void Discover(string name)
     {
-        Pokemon pokemon = Pokedex.Get(name);
+        Pokemon pokemon = Pokedex.GetByName(name);
         Console.WriteLine($"Pokemon {pokemon.Name} set to discovered");
         pokemon.Discover();
     }

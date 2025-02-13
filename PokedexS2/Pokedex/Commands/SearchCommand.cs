@@ -20,7 +20,7 @@ public class SearchCommand : Command
             return;
         }
 
-        Pokemon pokemon = Pokedex.Get(arguments[0]);
+        Pokemon pokemon = Pokedex.GetByName(arguments[0]);
         if (pokemon != null)
         {
             Console.WriteLine($"Name: {pokemon.Name} ({pokemon.Id})");
