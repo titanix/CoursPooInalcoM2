@@ -75,20 +75,32 @@ public class PokedexTests
         Pokedex.Pokedex pokedex = new Pokedex.Pokedex();
         Pokemon pokemon1 = new Pokemon(1, "Bulbizarre", Type.Grass, false);
         Pokemon pokemon2 = new Pokemon(2, "Herbizarre", Type.Grass, false);
+        Pokemon pokemon4 = new Pokemon(3, "Florizarre", Type.Grass | Type.Poison, false);
         Pokemon pokemon3 = new Pokemon(4, "Salamèche", Type.Fire, false);
         pokedex.Add(pokemon1);
         pokedex.Add(pokemon2);
         pokedex.Add(pokemon3);
+        pokedex.Add(pokemon4);
 
         // Act
         Pokemon[] pokedex_filtre = pokedex.GetByType(Type.Grass);
 
         // Assert
-        Assert.Equal<int>(2, pokedex_filtre.Length);
-        Pokemon p1 = pokedex_filtre[0];
-        Assert.Equal<Pokemon>(pokemon1, pokedex.GetByName(p1.Name));
-        Pokemon p2 = pokedex_filtre[1];
-        Assert.Equal<Pokemon>(pokemon2, pokedex.GetByName(p2.Name));
+        Assert.Equal<int>(3, pokedex_filtre.Length);
+
+        // Vérifier que les Pokémon filtrés sont bien ceux attendus
+        Assert.Collection(pokedex_filtre,
+            p => Assert.Equal("Bulbizarre", p.Name),
+            p => Assert.Equal("Herbizarre", p.Name),
+            p => Assert.Equal("Florizarre", p.Name)
+        );
+    }
+
+    [Fact]
+    public void CommandNotFoundTest()
+    {
+        CommandInterpreter cmdInt = new CommandInterpreter(null, null);
+        Assert.Throws<CommandNotFoundException>(() => cmdInt.Interpret(new string[] {"abc", "def", "ghi"}));
     }
 
 }

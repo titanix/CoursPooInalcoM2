@@ -1,20 +1,11 @@
+namespace Pokedex;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 
-namespace Pokedex;
-
-// Sérialise le Pokedex sous forme de JSON
-public class WriteJsonCommand : Command
+public class JsonWriter : Iwriter
 {
-    string saveDirecty = "Data";
-
-    public WriteJsonCommand(Pokedex pokedex, string[] commandArguments)
-        : base(pokedex, commandArguments)
-    {
-    }
-
-    public override void Execute()
+    public bool SaveFile(string path, Pokedex p)
     {
         // Cette classe permet de configurer comment est écrit le fichier JSON
         JsonSerializerOptions options = new JsonSerializerOptions
@@ -26,11 +17,37 @@ public class WriteJsonCommand : Command
             Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement),
         };
 
-        PokedexDto pokedexDto = Pokedex.ToDto();
+        PokedexDto pokedexDto = p.ToDto();
         string jsonString = JsonSerializer.Serialize(pokedexDto, options);
-        string path = $"{saveDirecty}/{arguments[0]}.json";
         File.WriteAllText(path, jsonString);
 
         Console.WriteLine("Fichier bien sauvegardé.");
+        return true;
     }
+
+    public string GetJson()
+    {
+        return "";
+    }
+}
+
+public class TxtWriter : Iwriter
+{
+    public bool SaveFile(string path, Pokedex p) // Pour conformer à l'interface, la portée doit aussi identique
+    {
+        // Vrai code
+        StreamWriter streamWriter = new StreamWriter(path);
+
+        p.Save(streamWriter);
+        streamWriter.Flush();
+        streamWriter.Close();
+
+        Console.WriteLine($"Pokedex saved to file {path}");
+        return true;
+    }
+}
+
+public interface Iwriter
+{
+    bool SaveFile(string path, Pokedex p);
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cG4ZiRReo7s=",
+  "dgSpecHash": "Mgr172Vg9do=",
   "success": true,
-  "projectFilePath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj",
+  "projectFilePath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj",
   "expectedPackageFiles": [
     "/Users/zhongjie/.nuget/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
     "/Users/zhongjie/.nuget/packages/microsoft.codecoverage/17.8.0/microsoft.codecoverage.17.8.0.nupkg.sha512",

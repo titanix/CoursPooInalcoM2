@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+      "projectUniqueName": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
       "projectName": "Pokedex",
-      "projectPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+      "projectPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
       "packagesPath": "/Users/zhongjie/.nuget/packages/",
-      "outputPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/obj/",
+      "outputPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/zhongjie/.nuget/NuGet/NuGet.Config"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj": {}
+    "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj": {}
   },
   "projects": {
-    "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj": {
+    "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+        "projectUniqueName": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
         "projectName": "Pokedex",
-        "projectPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+        "projectPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
         "packagesPath": "/Users/zhongjie/.nuget/packages/",
-        "outputPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/obj/",
+        "outputPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/zhongjie/.nuget/NuGet/NuGet.Config"
@@ -62,14 +62,14 @@
         }
       }
     },
-    "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj": {
+    "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj",
+        "projectUniqueName": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj",
+        "projectPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/Tests.csproj",
         "packagesPath": "/Users/zhongjie/.nuget/packages/",
-        "outputPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/obj/",
+        "outputPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/zhongjie/.nuget/NuGet/NuGet.Config"
@@ -84,8 +84,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj": {
-                "projectPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj"
+              "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj": {
+                "projectPath": "/Users/zhongjie/Documents/TAL_M2/Programmation Orientée Objet/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj"
               }
             }
           }

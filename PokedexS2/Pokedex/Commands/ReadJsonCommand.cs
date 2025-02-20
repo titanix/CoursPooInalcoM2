@@ -22,30 +22,35 @@ public class ReadJsonCommand : Command
 
     public override void Execute()
     {
-        JsonSerializerOptions options = new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-            // Le comporte par défault du sérialiseur est débile et échappe tous les caractères non ASCII
-            // par exemple Salamèche -> Salam\u00E8che. Pour éviter ça on utilise l'option qui suit
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement),
-        };
 
-        try
-        {
-            string path = $"{saveDirecty}/{arguments[0]}.json";
-            string content = File.ReadAllText(path);
+        string path = $"{saveDirecty}/{arguments[0]}.json";
 
-            PokedexDto pokedexDto = JsonSerializer.Deserialize<PokedexDto>(content, options);
-            Pokedex.LoadDto(pokedexDto);
+        Ireader jsonReader = new JsonReader();
+        Pokedex = jsonReader.ReadFile(path, Pokedex, localizationService);
+        // JsonSerializerOptions options = new JsonSerializerOptions
+        // {
+        //     WriteIndented = true,
+        //     PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+        //     // Le comporte par défault du sérialiseur est débile et échappe tous les caractères non ASCII
+        //     // par exemple Salamèche -> Salam\u00E8che. Pour éviter ça on utilise l'option qui suit
+        //     Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement),
+        // };
 
-            //Console.WriteLine("Fichier chargé.");
-            string message = localizationService.GetText("msg.FileLoaded");
-            Console.WriteLine(message);
-        }
-        catch// (FileNotFoundException e)
-        {
-            Console.WriteLine("Fichier non trouvé");
-        }
+        // try
+        // {
+        //     string path = $"{saveDirecty}/{arguments[0]}.json";
+        //     string content = File.ReadAllText(path);
+
+        //     PokedexDto pokedexDto = JsonSerializer.Deserialize<PokedexDto>(content, options);
+        //     Pokedex.LoadDto(pokedexDto);
+
+        //     //Console.WriteLine("Fichier chargé.");
+        //     string message = localizationService.GetText("msg.FileLoaded");
+        //     Console.WriteLine(message);
+        // }
+        // catch// (FileNotFoundException e)
+        // {
+        //     Console.WriteLine("Fichier non trouvé");
+        // }
     }
 }
