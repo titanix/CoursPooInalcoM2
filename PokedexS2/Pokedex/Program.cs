@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace Pokedex;
+﻿namespace Pokedex;
 
 public class Program
 {
