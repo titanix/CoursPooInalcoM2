@@ -97,4 +97,12 @@ public class Pokedex
                 .ToArray()
         };
     }
+
+    public int Count
+    {
+        get
+        {
+            return pokemons.Count(p => p != null);
+        }
+    }
 }

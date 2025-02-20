@@ -16,20 +16,10 @@ public class WriteJsonCommand : Command
 
     public override void Execute()
     {
-        // Cette classe permet de configurer comment est écrit le fichier JSON
-        JsonSerializerOptions options = new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-            // Le comporte par défault du sérialiseur est débile et échappe tous les caractères non ASCII
-            // par exemple Salamèche -> Salam\u00E8che. Pour éviter ça on utilise l'option qui suit
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement),
-        };
-
-        PokedexDto pokedexDto = Pokedex.ToDto();
-        string jsonString = JsonSerializer.Serialize(pokedexDto, options);
+        
         string path = $"{saveDirecty}/{arguments[0]}.json";
-        File.WriteAllText(path, jsonString);
+        IWriter writer = new JsonWriter();
+        writer.SaveFile(Pokedex, path);
 
         Console.WriteLine("Fichier bien sauvegardé.");
     }

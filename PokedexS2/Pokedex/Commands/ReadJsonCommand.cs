@@ -34,8 +34,8 @@ public class ReadJsonCommand : Command
         try
         {
             string path = $"{saveDirecty}/{arguments[0]}.json";
-            string content = File.ReadAllText(path);
-
+            IWriter writer = new JsonWriter();
+            string content = writer.GetJson(path);
             PokedexDto pokedexDto = JsonSerializer.Deserialize<PokedexDto>(content, options);
             Pokedex.LoadDto(pokedexDto);
 
