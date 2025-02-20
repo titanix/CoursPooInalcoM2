@@ -36,4 +36,9 @@ public class TextWriter : IWriter
 
         return path;
     }
+
+    public string GetJson(string path)
+    {
+        throw new NotImplementedException();
+    }
 }
