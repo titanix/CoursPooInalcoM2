@@ -1,0 +1,1 @@
+25;Pikachu;8;False

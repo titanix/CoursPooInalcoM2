@@ -1,0 +1,10 @@
+{
+  "pokemons": [
+    {
+      "id": 25,
+      "name": "Pikachu",
+      "type": 8,
+      "discovered": false
+    }
+  ]
+}
