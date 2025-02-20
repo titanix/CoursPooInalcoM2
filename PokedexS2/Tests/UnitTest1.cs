@@ -8,7 +8,7 @@ public class UnitTest1
     public void AddMonsterTest()
     {
         // Arrange
-        Pokemon pokemon = new Pokemon(25, "Picachu", Type.Electric);
+        Pokemon pokemon = new Pokemon(25, "Pikachu", Type.Electric);
         Pokedex.Pokedex pokedex = new Pokedex.Pokedex();
         
         // Act
@@ -22,7 +22,7 @@ public class UnitTest1
     public void DiscoverMonsterTest()
     {
         // Arrange
-        Pokemon pokemon = new Pokemon(25, "Picachu", Type.Electric);
+        Pokemon pokemon = new Pokemon(25, "Pikachu", Type.Electric);
         Pokedex.Pokedex pokedex = new Pokedex.Pokedex();
         pokedex.Add(pokemon);
 
@@ -37,7 +37,7 @@ public class UnitTest1
     public void GetMonsterByIdTest()
     {
         // Arrange
-        Pokemon pokemon = new Pokemon(25, "Picachu", Type.Electric);
+        Pokemon pokemon = new Pokemon(25, "Pikachu", Type.Electric);
         Pokedex.Pokedex pokedex = new Pokedex.Pokedex();
         pokedex.Add(pokemon);
 
@@ -52,14 +52,22 @@ public class UnitTest1
     public void GetMonsterByNameTest()
     {
         // Arrange
-        Pokemon pokemon = new Pokemon(25, "Picachu", Type.Electric);
+        Pokemon pokemon = new Pokemon(25, "Pikachu", Type.Electric);
         Pokedex.Pokedex pokedex = new Pokedex.Pokedex();
         pokedex.Add(pokemon);
 
         // Action
-        Pokemon result = pokedex.Get("Picachu");
+        Pokemon result = pokedex.Get("Pikachu");
 
         // Assert
         Assert.Equal(pokemon, result);
+    }
+
+    [Fact]
+    public void CommandNotFoundTest()
+    {
+        CommandNotFoundTest cmdInt = new CommandNotFoundTest(null, null);
+
+        Assert.Throws<CommandNotFoundException>(() => cmdInt.Interpret(new string[] { "ASDF" }));
     }
 }

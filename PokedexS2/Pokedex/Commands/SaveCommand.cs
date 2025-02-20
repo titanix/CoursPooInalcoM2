@@ -16,32 +16,16 @@ public class SaveCommand : Command
 
     public override void Execute()
     {
-        // TODO: if valid
-        string path = AddExtension(arguments[0]);
-        path = $"{saveDirecty}/{path}";
-        Directory.CreateDirectory(saveDirecty);
+        if (isValid) {
+            IWriter writer = new TextWriter();
+            string path = arguments[0];
+            writer.SaveFile(Pokedex, path);
 
-        StreamWriter streamWriter = new StreamWriter(path);
-
-        SavePokedex(streamWriter);
-        streamWriter.Flush();
-        streamWriter.Close();
-
-        Console.WriteLine($"Pokedex saved to file {path}");
-    }
-
-    void SavePokedex(StreamWriter file)
-    {
-        Pokedex.Save(file);
-    }
-
-    string AddExtension(string path)
-    {
-        if (!path.Contains("."))
-        {
-            return $"{path}.csv";
+            Console.WriteLine($"Pokedex saved to file {path}");
         }
-
-        return path;
+        else {
+            Console.WriteLine("Invalid command");
+        }
+        
     }
 }

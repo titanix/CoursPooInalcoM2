@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace Pokedex;
 
@@ -29,39 +30,53 @@ public class CommandInterpreter
         //commandName = localizationService.GetText(commandName);
         string[] commandArguments = arguments.Skip(1).ToArray();
 
-        switch (commandName)
-        {
-            case "add":
-                return new AddCommand(pokedex, commandArguments);
+//         switch (commandName)
+//         {
+//             case "add":
+//                 return new AddCommand(pokedex, commandArguments);
 
-            case "search":
-                return new SearchCommand(pokedex, commandArguments);
+//             case "search":
+//                 return new SearchCommand(pokedex, commandArguments);
 
-            case "discover":
-                return new DiscoverCommand(pokedex, commandArguments);
+//             case "discover":
+//                 return new DiscoverCommand(pokedex, commandArguments);
 
-            case "save":
-                return new SaveCommand(pokedex, commandArguments);
+//             case "save":
+//                 return new SaveCommand(pokedex, commandArguments);
 
-            case "load":
-                return new LoadCommand(pokedex, commandArguments);
+//             case "load":
+//                 return new LoadCommand(pokedex, commandArguments);
 
-            case "write_json":
-                return new WriteJsonCommand(pokedex, commandArguments);
+//             case "write_json":
+//                 return new WriteJsonCommand(pokedex, commandArguments);
 
-            case "read_json":
-                return new ReadJsonCommand(pokedex, localizationService, commandArguments);
+//             case "read_json":
+//                 return new ReadJsonCommand(pokedex, localizationService, commandArguments);
 
-            case "change_lang":
-                return new ChangeLanguageCommand(pokedex, localizationService, commandArguments);
+//             case "change_lang":
+//                 return new ChangeLanguageCommand(pokedex, localizationService, commandArguments);
 
-            default:
-                throw new CommandNotFoundException($"La commande {commandName} n'existe pas.");
-/*
-            default:
-                Console.Error.WriteLine($"Command '{commandName}' not recognized.");
-                return new NopCommand();
-                */
-        }
+//             default:
+//                 throw new CommandNotFoundException($"La commande {commandName} n'existe pas.");
+// /*
+//             default:
+//                 Console.Error.WriteLine($"Command '{commandName}' not recognized.");
+//                 return new NopCommand();
+//                 */
+//         }
+
+        return MakeCommand(commandName, pokedex, commandArguments); 
+    }
+
+    private Command MakeCommand(string name, Pokedex pokedex, string[] commandArguments)
+    {
+        string commandName = "Pokedex." + name[0].ToString().ToUpper() + name.Substring(1) + "Command";
+        
+        Assembly assembly = Assembly.GetExecutingAssembly();
+        System.Type type = assembly.GetType(commandName);
+
+        object test = Activator.CreateInstance(type, new object[] { pokedex, commandArguments });
+        
+        return test as Command;
     }
 }
