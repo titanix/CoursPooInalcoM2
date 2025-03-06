@@ -17,7 +17,7 @@ public class SaveCommand : Command
     public override void Execute()
     {
         if (isValid) {
-            IWriter writer = new TextWriter();
+            IWriter writer = new UnifiedWriter();
             string path = arguments[0];
             writer.SaveFile(Pokedex, path);
 

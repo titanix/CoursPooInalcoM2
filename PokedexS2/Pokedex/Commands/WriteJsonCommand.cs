@@ -18,7 +18,7 @@ public class WriteJsonCommand : Command
     {
         
         string path = $"{saveDirecty}/{arguments[0]}.json";
-        IWriter writer = new JsonWriter();
+        IWriter writer = new UnifiedWriter();
         writer.SaveFile(Pokedex, path);
 
         Console.WriteLine("Fichier bien sauvegardé.");

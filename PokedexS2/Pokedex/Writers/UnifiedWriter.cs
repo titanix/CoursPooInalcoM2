@@ -8,24 +8,22 @@ namespace Pokedex
     {
         private object writer;
 
-        public UnifiedWriter(string writerType)
+        public UnifiedWriter()
         {
-            if (writerType.Equals("TextWriter", StringComparison.OrdinalIgnoreCase))
-            {
-                writer = new TextWriter();
-            }
-            else if (writerType.Equals("JsonWriter", StringComparison.OrdinalIgnoreCase))
+            writer = new TextWriter();
+        }
+
+        public bool SaveFile(Pokedex pokedex, string path)
+        {
+            if (path.EndsWith(".json"))
             {
                 writer = new JsonWriter();
             }
             else
             {
-                throw new ArgumentException("Invalid writer type.");
+                writer = new TextWriter();
             }
-        }
 
-        public bool SaveFile(Pokedex pokedex, string path)
-        {
             var saveFileMethod = writer.GetType().GetMethod("SaveFile");
             if (saveFileMethod != null)
             {
@@ -37,6 +35,8 @@ namespace Pokedex
 
         public string GetJson(string path)
         {
+            writer = new JsonWriter();
+
             var getJsonMethod = writer.GetType().GetMethod("GetJson");
             if (getJsonMethod != null)
             {
