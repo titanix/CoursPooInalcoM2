@@ -1,6 +1,6 @@
 namespace Pokedex;
 
-public class TextWriter : IWriter
+public class OldTextWriter : IWriter
 {
     string saveDirecty = "Data";
     public bool SaveFile(Pokedex pokedex, string path)

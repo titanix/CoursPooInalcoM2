@@ -4,7 +4,7 @@ using System.Text.Unicode;
 
 
 namespace Pokedex;
-public class JsonWriter: IWriter
+public class OldJsonWriter: IWriter
 {
     JsonSerializerOptions options = new JsonSerializerOptions
         {
