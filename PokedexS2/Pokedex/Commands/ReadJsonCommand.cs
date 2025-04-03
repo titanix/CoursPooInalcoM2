@@ -22,6 +22,10 @@ public class ReadJsonCommand : Command
 
     public override void Execute()
     {
+        throw new NotImplementedException();
+    }
+    public async Task ExecuteAsync()
+    {
         JsonSerializerOptions options = new JsonSerializerOptions
         {
             WriteIndented = true,
@@ -34,7 +38,7 @@ public class ReadJsonCommand : Command
         try
         {
             string path = $"{saveDirecty}/{arguments[0]}.json";
-            string content = File.ReadAllText(path);
+            string content = await File.ReadAllTextAsync(path);
 
             PokedexDto pokedexDto = JsonSerializer.Deserialize<PokedexDto>(content, options);
             Pokedex.LoadDto(pokedexDto);
@@ -46,6 +50,10 @@ public class ReadJsonCommand : Command
         catch// (FileNotFoundException e)
         {
             Console.WriteLine("Fichier non trouvé");
+        }
+        finally
+        {
+            Console.WriteLine("Finally");
         }
     }
 }

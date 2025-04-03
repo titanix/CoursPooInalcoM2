@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "XO5gzRjKA2I=",
+  "dgSpecHash": "h1v04mfzdJM=",
   "success": true,
-  "projectFilePath": "/Users/perrineqhn/Desktop/M2/S2/POO/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/perrineqhn/Desktop/M2/S2/POO/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+  "expectedPackageFiles": [
+    "/Users/perrineqhn/.nuget/packages/microsoft.netcore.app.ref/8.0.13/microsoft.netcore.app.ref.8.0.13.nupkg.sha512",
+    "/Users/perrineqhn/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.13/microsoft.aspnetcore.app.ref.8.0.13.nupkg.sha512",
+    "/Users/perrineqhn/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.13/microsoft.netcore.app.host.osx-arm64.8.0.13.nupkg.sha512"
+  ],
   "logs": []
 }

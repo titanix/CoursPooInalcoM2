@@ -3,7 +3,7 @@ namespace Pokedex;
 // save <fichier>
 public class SaveCommand : Command
 {
-    string saveDirecty = "Data";
+    // string saveDirecty = "Data";
 
     public SaveCommand(Pokedex pokedex, string[] commandArguments)
         : base(pokedex, commandArguments)
@@ -16,32 +16,17 @@ public class SaveCommand : Command
 
     public override void Execute()
     {
-        // TODO: if valid
-        string path = AddExtension(arguments[0]);
-        path = $"{saveDirecty}/{path}";
-        Directory.CreateDirectory(saveDirecty);
-
-        StreamWriter streamWriter = new StreamWriter(path);
-
-        SavePokedex(streamWriter);
-        streamWriter.Flush();
-        streamWriter.Close();
-
-        Console.WriteLine($"Pokedex saved to file {path}");
-    }
-
-    void SavePokedex(StreamWriter file)
-    {
-        Pokedex.Save(file);
-    }
-
-    string AddExtension(string path)
-    {
-        if (!path.Contains("."))
+        /*
+        if (isValid)
         {
-            return $"{path}.csv";
+            IWriter writer = new TextWriter();
+            string path = $"{saveDirecty}/{arguments[0]}.txt";
+            writer.SaveFile(Pokedex, path);
         }
-
-        return path;
+        else
+        {
+            Console.WriteLine("Argument manquant.");
+        }
+        */
     }
 }

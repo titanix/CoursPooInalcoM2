@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace Pokedex;
 
@@ -29,10 +29,18 @@ public class CommandInterpreter
         //commandName = localizationService.GetText(commandName);
         string[] commandArguments = arguments.Skip(1).ToArray();
 
+        //return MakeCommand(commandName, pokedex, commandArguments);
+
         switch (commandName)
         {
+            case "test":
+                return MakeCommand("add", pokedex, commandArguments);
+
             case "add":
                 return new AddCommand(pokedex, commandArguments);
+
+            // case "add_plant":
+            //     return new AddPlantCommand(pokedex, commandArguments);
 
             case "search":
                 return new SearchCommand(pokedex, commandArguments);
@@ -63,5 +71,17 @@ public class CommandInterpreter
                 return new NopCommand();
                 */
         }
+    }
+
+    private Command MakeCommand(string name, Pokedex pokedex, string[] commandArguments)
+    {
+        string commandName = "Pokedex." + name[0].ToString().ToUpper() + name.Substring(1) + "Command";
+
+        Assembly asm = Assembly.GetExecutingAssembly();
+        System.Type type = asm.GetType(commandName);
+        
+        object test = Activator.CreateInstance(type, new object[] { pokedex, commandArguments } );
+
+        return test as Command;
     }
 }

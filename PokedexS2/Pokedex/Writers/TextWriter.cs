@@ -1,24 +1,39 @@
-// namespace Pokedex;
+namespace Pokedex;
 
-// public class TextWriter : IWriter
-// {
-//     public bool SaveFile(string fileName, Pokedex pokedex)
-//     {
-//         StreamWriter streamWriter = new StreamWriter(fileName);
+/*
+public class TextWriter : IWriter
+{
+    public bool SaveFile(Pokedex pokedex, string path)
+    {
+        // TODO: if valid
+        string path = AddExtension(arguments[0]);
+        path = $"{saveDirecty}/{path}";
+        Directory.CreateDirectory(saveDirecty);
 
-//         pokedex.Save(streamWriter);
-//         streamWriter.Flush();
-//         streamWriter.Close();
+        StreamWriter streamWriter = new StreamWriter(path);
 
-//         Console.WriteLine($"Pokedex saved to file {fileName}");
+        SavePokedex(streamWriter);
+        streamWriter.Flush();
+        streamWriter.Close();
 
-//         return true;
-//     }
-    
-// }
+        Console.WriteLine($"Pokedex saved to file {path}");
 
-// public interface IWriter
-// {
-//     bool SaveFile(string fileName, Pokedex pokedex);
-// }
+        return true;
+    }
 
+    void SavePokedex(StreamWriter file)
+    {
+        Pokedex.Save(file);
+    }
+
+    string AddExtension(string path)
+    {
+        if (!path.Contains("."))
+        {
+            return $"{path}.csv";
+        }
+
+        return path;
+    }
+}
+    */

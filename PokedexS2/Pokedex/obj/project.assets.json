@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/perrineqhn/Desktop/M2/S2/POO/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+      "projectUniqueName": "/Users/perrineqhn/Desktop/M2/S2/POO/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
       "projectName": "Pokedex",
-      "projectPath": "/Users/perrineqhn/Desktop/M2/S2/POO/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
+      "projectPath": "/Users/perrineqhn/Desktop/M2/S2/POO/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/Pokedex.csproj",
       "packagesPath": "/Users/perrineqhn/.nuget/packages/",
-      "outputPath": "/Users/perrineqhn/Desktop/M2/S2/POO/CoursPooInalcoM2/PokedexS2/Pokedex/obj/",
+      "outputPath": "/Users/perrineqhn/Desktop/M2/S2/POO/Fork/CoursPooInalcoM2/PokedexS2/Pokedex/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/perrineqhn/.nuget/NuGet/NuGet.Config"
@@ -42,9 +42,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
+        "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -60,12 +60,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.13, 8.0.13]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.osx-arm64",
+            "version": "[8.0.13, 8.0.13]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.13, 8.0.13]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

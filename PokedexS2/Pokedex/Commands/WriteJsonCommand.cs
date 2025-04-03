@@ -1,6 +1,4 @@
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Unicode;
+using System.Threading.Tasks;
 
 namespace Pokedex;
 
@@ -12,25 +10,31 @@ public class WriteJsonCommand : Command
     public WriteJsonCommand(Pokedex pokedex, string[] commandArguments)
         : base(pokedex, commandArguments)
     {
+        if (commandArguments.Length != 1)
+        {
+            isValid = false;
+        }
     }
-
     public override void Execute()
     {
-        // Cette classe permet de configurer comment est écrit le fichier JSON
-        JsonSerializerOptions options = new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-            // Le comporte par défault du sérialiseur est débile et échappe tous les caractères non ASCII
-            // par exemple Salamèche -> Salam\u00E8che. Pour éviter ça on utilise l'option qui suit
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement),
-        };
-
-        PokedexDto pokedexDto = Pokedex.ToDto();
-        string jsonString = JsonSerializer.Serialize(pokedexDto, options);
-        string path = $"{saveDirecty}/{arguments[0]}.json";
-        File.WriteAllText(path, jsonString);
-
-        Console.WriteLine("Fichier bien sauvegardé.");
+        throw new NotImplementedException();
     }
+    
+    public async Task ExecuteAsync()
+    {
+        if (isValid)
+        {
+            IWriter writer = new JsonWriter();
+            string path = $"{saveDirecty}/{arguments[0]}.json";
+            await writer.SaveFileAsync(Pokedex, path);
+        }
+        else
+        {
+            Console.WriteLine("Argument manquant.");
+        }
+    }
+
+    // TODO : faire une commande unique qui refactore WriteJsonCmd et SaveCmd
+    // qui contient private IWriter GetWriter(string format)
+    // (bonus: ajout xml)
 }

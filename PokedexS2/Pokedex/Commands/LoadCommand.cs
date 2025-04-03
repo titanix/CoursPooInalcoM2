@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Pokedex;
 
 public class LoadCommand : Command
@@ -12,6 +14,12 @@ public class LoadCommand : Command
     }
 
     public override void Execute()
+    {
+        throw new NotImplementedException("Execute() is not implemented. Use ExecuteAsync() instead.");
+    }
+
+
+    public async Task ExecuteAsync()
     {
         if (!isValid)
         {
@@ -29,12 +37,12 @@ public class LoadCommand : Command
             return;
         }
 
-        StreamReader reader = new StreamReader(path);
+        using StreamReader reader = new StreamReader(path);
 
         int count = 0;
         while(!reader.EndOfStream)
         {
-            string line = reader.ReadLine();
+            string line = await reader.ReadLineAsync(); // Ajout Async
             if (string.IsNullOrWhiteSpace(line))
             {
                 continue;
@@ -65,6 +73,8 @@ public class LoadCommand : Command
 
         Console.WriteLine($"{count} pokemons loaded from file.");
 
-        reader.Close();
+        //reader.Close();
+        //reader.Dispose();
+        return;
     }
 }

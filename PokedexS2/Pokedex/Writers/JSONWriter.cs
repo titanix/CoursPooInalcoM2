@@ -1,59 +1,64 @@
-// using System.Text.Encodings.Web;
-// using System.Text.Json;
-// using System.Text.Unicode;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
-// namespace Pokedex;
-// // Toutes les méthodes et propriétés de l'interface doivent être implémentées dans la classe qui l'implémente
-// // Tout doit être public dans une interface
+namespace Pokedex;
 
-// public class JsonWriter : IWriter // JsonWriter est de type IWriter
-// {
+public class JsonWriter : IWriter
+{
+    public bool SaveFile(Pokedex pokedex, string path)
+    {
+        try
+        {
+            string content = GetJson(pokedex);
+            File.WriteAllText(path, content);
 
-//     // Sauvegarde le Pokedex sous forme de fichier JSON dont le nom est passé en paramètre
-//     public bool SaveFile(string path, Pokedex pokedex)
-//     {
-//         try
-//         {
-//             string content = GetJson(pokedex);
-//             File.WriteAllText(path, content);
-//         }
-//         catch
-//         {
-//             Console.Error.WriteLine("An error occured while saving the file");
-//         }
+            Console.WriteLine("Fichier bien sauvegardé.");
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e.Message);
 
-//         return true;
-//     }
+            return false;
+        }
 
+        return true;
+    }
+    
+    public async Task<bool> SaveFileAsync(Pokedex pokedex, string path)
+    {
+        try
+        {
+            string content = GetJson(pokedex);
+            await File.WriteAllTextAsync(path, content);
 
-//     public string GetJson(Pokedex pokedex)
-//     {
-//         // Configuration des options de sérialisation JSON
-//         JsonSerializerOptions options = new JsonSerializerOptions
-//         {
-//             WriteIndented = true,
-//             // On suppose que JsonNamingPolicy.SnakeCaseLower est une implémentation personnalisée
-//             PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
-//             // Pour éviter que le sérialiseur n'échappe les caractères non-ASCII (ex : Salamèche)
-//             Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement)
-//         };
+            Console.WriteLine("Fichier bien sauvegardé.");
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e.Message);
 
-//         PokedexDto pokedexDto = pokedex.ToDto();
-//         string jsonString = JsonSerializer.Serialize(pokedexDto, options);
+            return false;
+        }
 
-//         return jsonString;
-//     }
-// }
+        return true;
+    }
 
-// public class TextWriter : IWriter
-// {
-//     public bool SaveFile(string path, Pokedex pokedex)
-//     {
-//         return true;
-//     }
-// }
+    private string GetJson(Pokedex pokedex)
+    {
+        // Cette classe permet de configurer comment est écrit le fichier JSON
+        JsonSerializerOptions options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower,
+            // Le comporte par défault du sérialiseur est débile et échappe tous les caractères non ASCII
+            // par exemple Salamèche -> Salam\u00E8che. Pour éviter ça on utilise l'option qui suit
+            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Latin1Supplement),
+        };
 
-// public interface IWriter
-// {
-//     bool SaveFile(string path, Pokedex pokedex);
-// }
+        PokedexDto pokedexDto = pokedex.ToDto();
+        string jsonString = JsonSerializer.Serialize(pokedexDto, options);
+
+        return jsonString;
+    }
+}

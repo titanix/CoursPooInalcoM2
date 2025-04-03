@@ -10,6 +10,6 @@ public class ListCommand : Command
 
     public override void Execute()
     {
-        // TODO
+        Console.WriteLine("coucou");
     }
 }
