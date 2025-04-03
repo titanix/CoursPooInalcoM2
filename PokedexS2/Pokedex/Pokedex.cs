@@ -3,7 +3,15 @@ namespace Pokedex;
 
 public class Pokedex
 {
-    Pokemon[] pokemons = new Pokemon[151];
+    ICollectible[] collectibles = new ICollectible[151];
+
+    public int Count
+    {
+        get
+        {
+            return collectibles.Length;
+        }
+    }
 
     public Pokedex()
     {
@@ -11,36 +19,40 @@ public class Pokedex
 
     public Pokedex(PokedexDto pokedexDto)
     {
-        LoadDto(pokedexDto);
+        throw new NotImplementedException();
+        //LoadDto(pokedexDto);
     }
 
     public void LoadDto(PokedexDto pokedexDto)
     {
+        throw new NotImplementedException();
+        /*
         foreach (PokemonDto pokemonDto in pokedexDto.Pokemons)
         {
             Pokemon pokemon = new Pokemon(pokemonDto);
             pokemons[pokemon.Id] = pokemon;
         }
+        */
     }
 
-    public void Add(Pokemon p)
+    public void Add(ICollectible p)
     {
-        pokemons[p.Id - 1] = p;
+        collectibles[p.Id - 1] = p;
     }
 
-    public void Discover(Pokemon p)
+    public void Discover(ICollectible p)
     {
         p.Discover();
     }
 
-    public Pokemon Get(int id)
+    public ICollectible Get(int id)
     {
-        return pokemons[id - 1];
+        return collectibles[id - 1];
     }
 
-    public Pokemon Get(string name)
+    public ICollectible Get(string name)
     {
-        foreach (Pokemon pokemon in pokemons)
+        foreach (ICollectible pokemon in collectibles)
         {
             if (pokemon != null && pokemon.Name.ToLower() == name.ToLower())
             {
@@ -54,7 +66,7 @@ public class Pokedex
     public Pokemon[] GetByType(Type type)
     {
         int arraySize = 0;
-        foreach (Pokemon pokemon in pokemons)
+        foreach (Pokemon pokemon in collectibles)
         {
             if (pokemon != null && pokemon.Type.HasFlag(type))
             {
@@ -64,7 +76,7 @@ public class Pokedex
 
         int index = 0;
         Pokemon[] result = new Pokemon[arraySize];
-        foreach (Pokemon pokemon in pokemons)
+        foreach (Pokemon pokemon in collectibles)
         {
             if (pokemon != null && pokemon.Type.HasFlag(type))
             {
@@ -77,7 +89,7 @@ public class Pokedex
 
     public void Save(StreamWriter file)
     {
-        foreach (Pokemon pokemon in pokemons)
+        foreach (Pokemon pokemon in collectibles)
         {
             if (pokemon != null)
             {
@@ -88,13 +100,16 @@ public class Pokedex
 
     public PokedexDto ToDto()
     {
+        throw new NotImplementedException();
+        /*
         return new PokedexDto
         {
             // On converti tous les pokémons en leur version DTO
-            Pokemons = pokemons
+            Pokemons = collectibles
                 .Where(p => p != null)
                 .Select(p => p.ToDto())
                 .ToArray()
         };
+        */
     }
 }

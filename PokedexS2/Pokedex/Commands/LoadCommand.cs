@@ -29,7 +29,7 @@ public class LoadCommand : Command
             return;
         }
 
-        StreamReader reader = new StreamReader(path);
+        using StreamReader reader = new StreamReader(path);
 
         int count = 0;
         while(!reader.EndOfStream)
@@ -65,6 +65,7 @@ public class LoadCommand : Command
 
         Console.WriteLine($"{count} pokemons loaded from file.");
 
-        reader.Close();
+        //reader.Close();
+        //reader.Dispose();
     }
 }

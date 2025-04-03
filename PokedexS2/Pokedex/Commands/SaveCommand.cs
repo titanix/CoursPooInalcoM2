@@ -16,6 +16,7 @@ public class SaveCommand : Command
 
     public override void Execute()
     {
+        /*
         if (isValid)
         {
             IWriter writer = new TextWriter();
@@ -26,5 +27,6 @@ public class SaveCommand : Command
         {
             Console.WriteLine("Argument manquant.");
         }
+        */
     }
 }

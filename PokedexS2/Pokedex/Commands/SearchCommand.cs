@@ -20,11 +20,11 @@ public class SearchCommand : Command
             return;
         }
 
-        Pokemon pokemon = Pokedex.Get(arguments[0]);
+        ICollectible pokemon = Pokedex.Get(arguments[0]);
         if (pokemon != null)
         {
             Console.WriteLine($"Name: {pokemon.Name} ({pokemon.Id})");
-            Console.WriteLine($"Type: {pokemon.Type}");
+            //Console.WriteLine($"Type: {pokemon.Type}");
         }
         else
         {

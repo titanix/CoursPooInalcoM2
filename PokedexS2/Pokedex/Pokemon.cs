@@ -1,6 +1,6 @@
 namespace Pokedex;
 
-public class Pokemon
+public class Pokemon : ICollectible
 {
     string separator = ";";
 

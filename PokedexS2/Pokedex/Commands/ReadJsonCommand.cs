@@ -47,5 +47,9 @@ public class ReadJsonCommand : Command
         {
             Console.WriteLine("Fichier non trouvé");
         }
+        finally
+        {
+            Console.WriteLine("Finally");
+        }
     }
 }

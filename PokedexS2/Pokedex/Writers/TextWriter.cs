@@ -1,5 +1,6 @@
 namespace Pokedex;
 
+/*
 public class TextWriter : IWriter
 {
     public bool SaveFile(Pokedex pokedex, string path)
@@ -35,3 +36,4 @@ public class TextWriter : IWriter
         return path;
     }
 }
+    */

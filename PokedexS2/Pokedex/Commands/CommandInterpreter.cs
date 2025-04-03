@@ -39,6 +39,9 @@ public class CommandInterpreter
             case "add":
                 return new AddCommand(pokedex, commandArguments);
 
+            case "add_plant":
+                return new AddPlantCommand(pokedex, commandArguments);
+
             case "search":
                 return new SearchCommand(pokedex, commandArguments);
 
