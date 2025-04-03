@@ -3,7 +3,7 @@ namespace Pokedex;
 
 public class Pokedex
 {
-    Pokemon[] pokemons = new Pokemon[151];
+    ICollectible[] collectibles = new ICollectible[151];
 
     public Pokedex()
     {
@@ -16,35 +16,36 @@ public class Pokedex
 
     public void LoadDto(PokedexDto pokedexDto)
     {
-        foreach (PokemonDto pokemonDto in pokedexDto.Pokemons)
-        {
-            Pokemon pokemon = new Pokemon(pokemonDto);
-            pokemons[pokemon.Id] = pokemon;
-        }
+        throw new NotImplementedException();
+        // foreach (PokemonDto pokemonDto in pokedexDto.Pokemons)
+        // {
+        //     Pokemon pokemon = new Pokemon(pokemonDto);
+        //     pokemons[pokemon.Id] = pokemon;
+        // }
     }
 
-    public void Add(Pokemon p)
+    public void Add(ICollectible p)
     {
-        pokemons[p.Id - 1] = p;
+        collectibles[p.Id - 1] = p;
     }
 
-    public void Discover(Pokemon p)
+    public void Discover(ICollectible p)
     {
         p.Discover();
     }
 
-    public Pokemon Get(int id)
+    public ICollectible Get(int id)
     {
-        return pokemons[id - 1];
+        return collectibles[id - 1];
     }
 
-    public Pokemon Get(string name)
+    public ICollectible Get(string name)
     {
-        foreach (Pokemon pokemon in pokemons)
+        foreach (ICollectible collectible in collectibles)
         {
-            if (pokemon != null && pokemon.Name.ToLower() == name.ToLower())
+            if (collectible != null && collectible.Name.ToLower() == name.ToLower())
             {
-                return pokemon;
+                return collectible;
             }
         }
 
@@ -53,56 +54,59 @@ public class Pokedex
 
     public Pokemon[] GetByType(Type type)
     {
-        int arraySize = 0;
-        foreach (Pokemon pokemon in pokemons)
-        {
-            if (pokemon != null && pokemon.Type.HasFlag(type))
-            {
-                arraySize++;
-            }
-        }
+        // int arraySize = 0;
+        // foreach (Pokemon pokemon in pokemons)
+        // {
+        //     if (pokemon != null && pokemon.Type.HasFlag(type))
+        //     {
+        //         arraySize++;
+        //     }
+        // }
 
-        int index = 0;
-        Pokemon[] result = new Pokemon[arraySize];
-        foreach (Pokemon pokemon in pokemons)
-        {
-            if (pokemon != null && pokemon.Type.HasFlag(type))
-            {
-                result[index++] = pokemon;
-            }
-        }
+        // int index = 0;
+        // Pokemon[] result = new Pokemon[arraySize];
+        // foreach (Pokemon pokemon in pokemons)
+        // {
+        //     if (pokemon != null && pokemon.Type.HasFlag(type))
+        //     {
+        //         result[index++] = pokemon;
+        //     }
+        // }
 
-        return result;
+        // return result;
+        return null;
     }
 
     public void Save(StreamWriter file)
     {
-        foreach (Pokemon pokemon in pokemons)
-        {
-            if (pokemon != null)
-            {
-                file.WriteLine(pokemon.ToString());
-            }
-        }
+        throw new NotImplementedException();
+        // foreach (ICollectible pokemon in pokemons)
+        // {
+        //     if (pokemon != null)
+        //     {
+        //         file.WriteLine(pokemon.ToString());
+        //     }
+        // }
     }
 
     public PokedexDto ToDto()
     {
-        return new PokedexDto
-        {
-            // On converti tous les pokémons en leur version DTO
-            Pokemons = pokemons
-                .Where(p => p != null)
-                .Select(p => p.ToDto())
-                .ToArray()
-        };
+        throw new NotImplementedException();
+        // return new PokedexDto
+        // {
+        //     // On converti tous les pokémons en leur version DTO
+        //     Pokemons = pokemons
+        //         .Where(p => p != null)
+        //         .Select(p => p.ToDto())
+        //         .ToArray()
+        // };
     }
 
     public int Count
     {
         get
         {
-            return pokemons.Count(p => p != null);
+            return collectibles.Count(p => p != null);
         }
     }
 }

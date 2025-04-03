@@ -25,15 +25,15 @@ public class DiscoverCommand : Command
 
     void Discover(string name)
     {
-        Pokemon pokemon = Pokedex.Get(name);
-        Console.WriteLine($"Pokemon {pokemon.Name} set to discovered");
-        pokemon.Discover();
+        // Pokemon pokemon = Pokedex.Get(name);
+        // Console.WriteLine($"Pokemon {pokemon.Name} set to discovered");
+        // pokemon.Discover();
     }
 
     void Discover(int id)
     {
-        Pokemon pokemon = Pokedex.Get(id);
-        Console.WriteLine($"Pokemon {pokemon.Name} set to discovered");
-        pokemon.Discover();
+        // Pokemon pokemon = Pokedex.Get(id);
+        // Console.WriteLine($"Pokemon {pokemon.Name} set to discovered");
+        // pokemon.Discover();
     }
 }

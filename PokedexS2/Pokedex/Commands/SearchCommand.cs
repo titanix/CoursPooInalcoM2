@@ -20,15 +20,15 @@ public class SearchCommand : Command
             return;
         }
 
-        Pokemon pokemon = Pokedex.Get(arguments[0]);
-        if (pokemon != null)
+        ICollectible collectible = Pokedex.Get(arguments[0]);
+        if (collectible != null)
         {
-            Console.WriteLine($"Name: {pokemon.Name} ({pokemon.Id})");
-            Console.WriteLine($"Type: {pokemon.Type}");
+            Console.WriteLine($"Name: {collectible.Name} ({collectible.Id})");
+            // Console.WriteLine($"Type: {pokemon.Type}");
         }
         else
         {
-            Console.WriteLine("Pokémon non trouvé !");
+            Console.WriteLine("Item non trouvé !");
         }
     }
 }
